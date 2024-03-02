@@ -1,0 +1,55 @@
+PROJECT DOCUMENTATION
+
+PROJECT STEPS:
+
+1) Finding data
+
+I've been searching for data that would enable a comparison of an indicator for different countries and different years
+and ideally at least one more category other than the main indicator.
+I've found Eurostat database with great documentation and wide range of topics.
+ 
+I've chosen the topic 'Youth unemployment'.
+I'd like to analyze this topic more because I am a recent graduate and from my international experience,
+I've found it fascinating what impact unemployment can have on people already during their school years,
+when they are aware of possible difficulties that they would be facing in near future, when trying to find a job.
+
+The dataset I source data from:
+'Youth unemployment rate by sex, age and NUTS 2 regions'
+	Time frequency: Annualy 
+	Age categories: 15-19, 20-24, 25-29 years
+	Sex: Total, Males, Females
+	Unit of measure: Percentage
+	Geopolitical entity (reporting): 
+		- Aggregation: European Union - 27 countries (from 2020) 
+		- Countries
+		- NUTS1 regions
+		- NUTS2 regions
+	Time: 1999-2022
+
+I analyze the data available on Eurostat. 
+I've choosen more general categorisation (men and women together, no regions, only countries) to avoid null values.
+I filter data to download only what I will use:
+3 separate spreadsheets for 3 chosen age categories, men and women together, only EU countries, for all available years (1999-2022).
+
+2) Transforming data
+
+Data transformation in PowerQuery.
+Cleaning data from unnecessary rows and columns.
+Mám země v jednom sloupci a pro každý rok mám další sloupec. 
+	-> Chci mít jen tři sloupce: země, rok a hodnota. Proto z řádku s roky vytvořím názvy sloupců a převedu tyto sloupce na řádky.
+Zjistila jsem, že není možné přesunout zdrojové soubory. 
+Měla jsem ale zdroje ve stažených souborech a potřebovala jsem je přesunout do projektové složky. 
+	-> Po přesunutí jsem změnila zdroj dat přímo v PowerBI, abych nemusela tvořit vše znovu.
+Aby se mi sloupec s hodnotami zobrazoval správně jako procenta, 
+vytvořím nový sloupec, který dělí původní hodnotu stem, a ten už bez problému převedu do formátu procenta.
+
+Vytvořím si 2 tabulky: 
+se seznamem zemí 
+	(duplikací libovolné tabulky -> zachovám pouze sloupec se zeměmi a odeberu duplicity,
+	všechny tři datasety mám pro stejné země, provádím tedy pouze jednou)
+a se seznamem let (obdobně).
+
+2) datasets:
+Excel spreadsheets:
+- Youth unemployment rate by sex, age and NUTS 2 regions:
+	yth_empl_110_spreadsheet (https://ec.europa.eu/eurostat/databrowser/view/yth_empl_110/default/table?lang=en&category=yth.yth_empl)
