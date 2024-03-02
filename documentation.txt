@@ -43,13 +43,23 @@ Měla jsem ale zdroje ve stažených souborech a potřebovala jsem je přesunout
 Aby se mi sloupec s hodnotami zobrazoval správně jako procenta, 
 vytvořím nový sloupec, který dělí původní hodnotu stem, a ten už bez problému převedu do formátu procenta.
 
-Vytvořím si 2 tabulky: 
+Všechny tři tabulky s hodnotami nezaměstnanosti zobrazují to samé, jen pro tři odlišné věkové kategorie. 
+Tabulky tedy spojím (merge) do jedné na základě shody země a roku.
+
+Vytvořím si 2 dodatečné tabulky: 
 se seznamem zemí 
 	(duplikací libovolné tabulky -> zachovám pouze sloupec se zeměmi a odeberu duplicity,
 	všechny tři datasety mám pro stejné země, provádím tedy pouze jednou)
 a se seznamem let (obdobně).
 
-2) datasets:
+V zobrazení modelu propojím tabulku s roky a zeměmi propojením 1-* se třemi tabulkami s daty.
+
+Přidám hierarchii - evropské regiony.
+
+
+
+
+SOURCES:
 Excel spreadsheets:
 - Youth unemployment rate by sex, age and NUTS 2 regions:
 	yth_empl_110_spreadsheet (https://ec.europa.eu/eurostat/databrowser/view/yth_empl_110/default/table?lang=en&category=yth.yth_empl)
