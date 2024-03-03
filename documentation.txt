@@ -1,8 +1,14 @@
 PROJECT DOCUMENTATION
 
+-----------------------------------------------
+
 PROJECT STEPS:
 
+-----------------------------------------------
+
 1) Finding data
+
+-----------------------------------------------
 
 I've been searching for data that would enable a comparison of an indicator for different countries and different years
 and ideally at least one more category other than the main indicator.
@@ -28,38 +34,68 @@ The dataset I source data from:
 
 I analyze the data available on Eurostat. 
 I've choosen more general categorisation (men and women together, no regions, only countries) to avoid null values.
+
 I filter data to download only what I will use:
 3 separate spreadsheets for 3 chosen age categories, men and women together, only EU countries, for all available years (1999-2022).
 
+-----------------------------------------------
+
 2) Transforming data
+
+-----------------------------------------------
 
 Data transformation in PowerQuery.
 Cleaning data from unnecessary rows and columns.
-Mám země v jednom sloupci a pro každý rok mám další sloupec. 
-	-> Chci mít jen tři sloupce: země, rok a hodnota. Proto z řádku s roky vytvořím názvy sloupců a převedu tyto sloupce na řádky.
-Zjistila jsem, že není možné přesunout zdrojové soubory. 
-Měla jsem ale zdroje ve stažených souborech a potřebovala jsem je přesunout do projektové složky. 
-	-> Po přesunutí jsem změnila zdroj dat přímo v PowerBI, abych nemusela tvořit vše znovu.
-Aby se mi sloupec s hodnotami zobrazoval správně jako procenta, 
-vytvořím nový sloupec, který dělí původní hodnotu stem, a ten už bez problému převedu do formátu procenta.
+I have countries in one column and then one column for each year.
+	-> I want only 3 columns: country, year, value. 
+	I googled and found a solution: unpivot columns.
+	Therefore, I use first row (years) as headers and unpivot the year columns to display in only one column, but multiple rows.
 
-Všechny tři tabulky s hodnotami nezaměstnanosti zobrazují to samé, jen pro tři odlišné věkové kategorie. 
-Tabulky tedy spojím (merge) do jedné na základě shody země a roku.
+I've discovered by accident that I cannot move the source data files, but I need to move them from downloads to the project folder.
+	-> I googled and found a solution. After moving files, I changed the source in Power BI directly.
 
-Vytvořím si 2 dodatečné tabulky: 
-se seznamem zemí 
-	(duplikací libovolné tabulky -> zachovám pouze sloupec se zeměmi a odeberu duplicity,
-	všechny tři datasety mám pro stejné země, provádím tedy pouze jednou)
-a se seznamem let (obdobně).
+To dislay percentage value correctly, I create a new column, dividing the value column by 100. 
+This column can be changed to % format and displays correctly.
 
-V zobrazení modelu propojím tabulku s roky a zeměmi propojením 1-* se třemi tabulkami s daty.
+All 3 tables display the same data, only for 3 different age categories.
+Therefore, I merge the tables in one (on the same country and year).
 
-Přidám hierarchii - evropské regiony.
+Two additional tables created:
+- list of countries
+	(any of the 3 tables duplicated -> only the column with countries left -> eliminate duplicates,
+	all of the 3 tables contain the same countries, hence no need to repeat the step for the different tables)
+- list of years (similar steps).
+
+In Model view, I connect tables with years and countries 1-* to the 3 tables with data.
+
+Adding a hierarchy - european regions.
+
+-----------------------------------------------
+
+I've discovered how to download all data that I filter on Eurostat at once, with no need of too much additional formating and unpivoting.
+Data downloads all at once (in csv/xlsx/tsv/gz formats). 
+Additionaly, code lists are available (https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=codeList),
+this could prevent discrepancies in the future if the dataset would grow (if I'd like to merge/connect current dataset with more data).
+This way, data is much cleaner and proper for data analysis use.
+The dilema is if I should start the project from scratch again, now that I already have visualisations in progress:
+I could either continue with the datasets that I had already transformed in a quite complicated way (not ideal),
+or download datasets the preferrable way and start from zero, but have it clean and easily readable
+(for example with codes of countries instead of their names, enabling use of code lists ofr more clarity).
+
+I decide to begin from sctratch. With all I know about the data structure now, it won't take that long.
+
+-----------------------------------------------
+
+On Eurostat website, I download the appropriately filtered data in csv and code lists in tsv.
+This way, I have less tables than previously, all data connected together (= clearer data structure). 
+Data concentration in one central table will enable to create more interesting visualisations more easily.
 
 
-
+-----------------------------------------------
 
 SOURCES:
-Excel spreadsheets:
+
 - Youth unemployment rate by sex, age and NUTS 2 regions:
-	yth_empl_110_spreadsheet (https://ec.europa.eu/eurostat/databrowser/view/yth_empl_110/default/table?lang=en&category=yth.yth_empl)
+	https://doi.org/10.2908/YTH_EMPL_110
+- Code lists:
+	https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=codeList
