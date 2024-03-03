@@ -95,17 +95,25 @@ I clear data in Power Query:
 	I delete unnecessary columns, adjust data types, rename columns etc.
 	I merge both code lists with the main table (inner merge) to contain only data that I'll use -> reducing stored data.
 	I create one more code list manually because it contains only very simple little data (sex codes F, M, T meaning).
+	One more table created for years in case I'd like to add more tables containing years.
+		-> I duplicate the main table, delete all columns except the one with years and eliminate duplicates.
+
+Need to change data type in column with values from Text to Decimals, but it doesn't seem to work: 
+Decimals are shown with a comma as delimiter and values don't display in Data view at all.
+	-> Resolved:
+	Commas are correct as delimiter for decimals. 
+	In Data view, null values were displaying on the top, hence no values were visible unless scrolling down.
+
+Transforming values: divide by 100 (percent). By googling, I've found a direct option: From Number -> Standard -> Percentage.
+Countries column in Data view categorised as Country for map visuals to work correctly.
+Connections created between tables in Model view.
 
 -----------------------------------------------
 
-I'll continue by:
-- adjusting data in Data view 
-and 
-- creating connections between tables in Model view in PowerBI.
+-> Maps don't work, will have to dive deeper to see how to display correctly.
+- Data about Czechia and CZ regions could be a good extra dataset to connect with my data. ČSÚ
 
 -----------------------------------------------
-
-
 
 SOURCES:
 
