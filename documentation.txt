@@ -87,11 +87,25 @@ I decide to begin from sctratch. With all I know about the data structure now, i
 -----------------------------------------------
 
 On Eurostat website, I download the appropriately filtered data in csv and code lists in tsv.
-This way, I have less tables than previously, all data connected together (= clearer data structure). 
-Data concentration in one central table will enable to create more interesting visualisations more easily.
+This way, I have less tables than previously, all data connected together (= clearer data structure), concentrated in one central table.
+This will enable to create more interesting visualisations more easily.
 
+I leave the files in csv and tsv format and transform them in PowerBI directly.
+I clear data in Power Query:
+	I delete unnecessary columns, adjust data types, rename columns etc.
+	I merge both code lists with the main table (inner merge) to contain only data that I'll use -> reducing stored data.
+	I create one more code list manually because it contains only very simple little data (sex codes F, M, T meaning).
 
 -----------------------------------------------
+
+I'll continue by:
+- adjusting data in Data view 
+and 
+- creating connections between tables in Model view in PowerBI.
+
+-----------------------------------------------
+
+
 
 SOURCES:
 
