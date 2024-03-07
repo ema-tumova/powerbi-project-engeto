@@ -110,8 +110,27 @@ Connections created between tables in Model view.
 
 -----------------------------------------------
 
--> Maps don't work, will have to dive deeper to see how to display correctly.
-- Data about Czechia and CZ regions could be a good extra dataset to connect with my data. ČSÚ
+3) Vizualising data
+
+-----------------------------------------------
+
+Inspiration for colours/design choice found on Google. 
+I want a grey background for a better contrast with the visualisations. 
+
+First, I roughly determine what I want to visualize:
+	- contrast men x women
+	- contrast different countries
+	- contrast different years 
+	- contrast different age groups
+
+How I can visualize it:
+	- clustered bar/column charts (men x women or age groups comparison)
+	- map (countries comparison: Location = Code of the country)
+	- line chart (development over years)
+	- cards (most important values overview)
+	- slicers (to filter what is displayed)
+
+I won't probably use any stacked visualisations or pie charts because I only work with data about chosen age groups, not the whole population.
 
 -----------------------------------------------
 
