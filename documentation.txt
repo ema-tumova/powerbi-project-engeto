@@ -134,9 +134,12 @@ I won't probably use any stacked visualisations or pie charts because I only wor
 
 -----------------------------------------------
 
+
 SOURCES:
 
 - Youth unemployment rate by sex, age and NUTS 2 regions:
 	https://doi.org/10.2908/YTH_EMPL_110
+- Population change - Demographic balance and crude rates at national level:
+	https://doi.org/10.2908/DEMO_GIND
 - Code lists:
 	https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=codeList
