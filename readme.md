@@ -7,7 +7,7 @@ Final Power BI project for a data analysis course with Engeto
 - **Assignment** (*assignment.txt*)
 - **Final Power BI project** (*Final_project_PBI_Youth_unemployment_Ema_Tumova.pbix*)
 - **Comments** (*project_comments.txt*), detailing steps and decisions taken during the creation of this project.
-- **First version of project - discarded** (file *first_version_not_used*), contains first draft of the project. 
+- **First version of project - discarded** (folder *first_version_not_used*), contains first draft of the project. 
 - **Data sources** (*estat_yth_empl_110_filtered_eu.csv*, *ESTAT_GEO_eurostat_code_list.tsv*, *ESTAT_AGE_eurostat_code_list.tsv*)
 
 # How to proceed:
