@@ -1,0 +1,14 @@
+PROJECT ASSIGNMENT
+
+Visualize a dataset of your choice.
+
+The final PBI must meet the following criteria:
+
+1. 2-5 pages
+2. At least 5 different types of visuals
+3. Filtering using slicers
+4. Use of bookmarks/page navigation
+5. Linking multiple data sources, either in Power Query or in Power BI
+6. Use of a data hierarchy of at least two levels
+7. Creating at least 1 measure and 1 calculated column
+8. Graphical editing of the visuals used and a visually friendly resulting report
