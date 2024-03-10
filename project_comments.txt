@@ -1,0 +1,172 @@
+PROJECT COMMENTS
+
+This file contains comments about the progress and steps that I've taken while creating the Power BI project, 
+including my struggles and solutions that I've found.
+
+First, I've started with the project, discarded that version afterwards and restarted the project from scratch.
+However, I've learned a lot during that phase, so I include it in the below comments as well.
+
+
+-----------------------------------------------
+
+1) Finding data
+
+-----------------------------------------------
+
+I've been searching for data that would enable a comparison of an indicator for different countries and different years
+and ideally at least one more category other than the main indicator.
+I've found Eurostat database with great documentation and wide range of topics.
+ 
+I've chosen the topic 'Youth unemployment'.
+I'd like to analyse this topic more because I am a recent graduate and from my international experience,
+I've seen what impact unemployment can have on people already during their school years,
+when they are aware of possible difficulties that they would be facing in near future, when trying to find a job.
+
+The dataset I've chosen: 'Youth unemployment rate by sex, age and NUTS 2 regions' (Eurostat - https://doi.org/10.2908/YTH_EMPL_110)
+	Time frequency: Annually
+	Age categories: 15-19, 20-24, 25-29, 15-29 years
+	Sex: Total, Males, Females
+	Unit of measure: Percentage
+	Geopolitical entity (reporting):
+		- Countries
+	Time: 1999-2022
+
+-----------------------------------------------
+
+FIRST VERSION - discarded later
+
+-----------------------------------------------
+
+I've filtered data to download only what I would use:
+3 separate spreadsheets for 3 chosen age categories, men and women together, only EU countries, for all available years (1999-2022).
+
+-----------------------------------------------
+
+2) Transforming data
+
+-----------------------------------------------
+
+Data transformation in Power Query.
+Cleaning data from unnecessary rows and columns.
+I have countries in one column and then one column for each year.
+	-> I want only 3 columns: country, year, value. 
+	I googled and found a solution: unpivot columns.
+	Therefore, I use first row (years) as headers and unpivot the year columns to display in only one column, but multiple rows.
+
+I've discovered by accident that I cannot move the source data files, but I needed to move them from downloads to the project folder.
+	-> I googled and found a solution. After moving files, I changed the source in Power BI directly.
+
+To display percentage value correctly, I create a new column, dividing the value column by 100. 
+This column can be changed to % format and displays correctly. 
+Later, I've found a more convenient solution (below).
+
+All 3 tables display the same data, only for 3 different age categories.
+Therefore, I merge the tables in one (on the same country and year).
+
+Two additional tables created:
+- list of countries
+	(any of the 3 tables duplicated -> only the column with countries left -> eliminate duplicates,
+	all the 3 tables contain the same countries, hence no need to repeat the step for the different tables)
+- list of years (similar steps).
+
+In Model view, I connect tables containing unique years and countries 1-* to the 3 tables with data.
+
+Adding a hierarchy - European regions.
+
+-----------------------------------------------
+
+DISCARTING FIRST VERSION
+RESTARTING PROJECT FROM SCRATCH
+
+-----------------------------------------------
+
+I've discovered how to download all data that I filter on Eurostat at once, with no need of too much additional formatting and unpivoting.
+Data downloads all at once (in csv/xlsx/tsv/gz formats).
+
+Additionally, code lists are available (https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=codeList).
+This could prevent discrepancies in the future if the dataset would grow (if I'd like to merge/connect current dataset with more data).
+
+This way, data is much cleaner and appropriate for data analysis use.
+
+The dilemma is if I should start the project from scratch again, now that I already have visualisations in progress:
+I could either continue with the datasets that I had already transformed in a quite complicated way (not ideal),
+or download datasets the preferrable way and start from zero, but have it clean and easily readable
+(for example, with codes of countries instead of their names, enabling use of code lists for more clarity).
+
+I decide to begin from scratch. With all I know about the data structure now, it won't take that long.
+
+-----------------------------------------------
+
+SECOND (FINAL) VERSION
+
+-----------------------------------------------
+
+2) Transforming data
+
+-----------------------------------------------
+
+On Eurostat website, I download the appropriately filtered data in csv format and code lists in tsv format.
+This way, I have less tables than previously, all data connected together (= clearer data structure), concentrated in one central table.
+This will enable to create more interesting visualizations more easily.
+
+I leave the files in csv and tsv format and transform them in Power BI directly.
+
+Clearing data in Power Query:
+	I delete unnecessary columns, adjust data types, rename columns etc.
+	I merge both code lists with the main table (inner merge) to contain only data that I'll use -> reducing stored data.
+	I create one more code list manually because it contains only very simple, little data (sex codes F, M, T meaning).
+	One more table created for years in case I'd like to add more tables containing years.
+		-> I duplicate the main table, delete all columns except the one with years and eliminate duplicates.
+
+Need to change data type in column with values from Text to Decimals, but it doesn't seem to work: 
+Decimals are shown with a comma as a delimiter and values don't display in Data view at all.
+	-> Resolved:
+		Commas are correct as a delimiter for decimals. 
+		In Data view, null values were displaying at the top, hence no values were visible unless scrolling down.
+
+Transforming values: divide by 100 (percent). 
+	By googling, I've found a direct option: From Number -> Standard -> Percentage.
+
+Connections created between tables in Model view.
+
+-----------------------------------------------
+
+3) Visualizing data
+
+-----------------------------------------------
+
+Inspiration for colours/design choice found on Google.
+
+First, I roughly determine what I want to visualize:
+	- contrast men x women
+	- contrast different countries
+	- contrast different years 
+	- contrast different age groups
+
+How I can visualize it:
+	- clustered bar/column charts (men x women or age groups comparison)
+	- map (countries comparison)
+	- line chart (development over years)
+	- cards (most important values overview)
+	- slicers (to filter what is displayed)
+
+I won't probably use any stacked visualisations or pie charts because I only work with data about chosen age groups, not the whole population.
+
+Visualizations and intro page created.
+Added navigation buttons on each page.
+Created bookmarks (to display only V4 countries in 2002, 2012, 2022).
+
+Final touch:
+Went through the report as a whole.
+	- Smoothed the design to be matching between different pages.
+	- Corrected the default naming where needed.
+	- Tested functionalities, slicers, buttons. Adjusted if something didn't work properly.
+
+-----------------------------------------------
+
+DATA SOURCE:
+
+- Youth unemployment rate by sex, age and NUTS 2 regions:
+	https://doi.org/10.2908/YTH_EMPL_110
+- Code lists:
+	https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=codeList
