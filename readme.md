@@ -16,5 +16,3 @@ Final Power BI project for a data analysis course with Engeto
 - If you are interested in detailed steps taken during the creation of this project, go to comments.
 - First version of the project isn't to be presented. It only illustrates the progress made, compared to the second final version.
 - Data sources are downloaded from Eurostat: https://doi.org/10.2908/YTH_EMPL_110 and https://ec.europa.eu/eurostat/databrowser/bulk?lang=en&selectedTab=codeList.
-
-**Discord name**: ema.ma.mamu
